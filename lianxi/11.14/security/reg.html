@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form action="{url:/security/reg_ok}" method="post" onsubmit = 'return valid();'>
+	<p>用户名<input type="text" name="username" id="username"></p>
+	<p>密码<input type="password" name="password" id="password"></p>
+	<p>确认密码<input type="password" name="repassword" id="repassword"></p>
+	<p>真实姓名<input type="text" name="truename" id="truename"></p>
+	<p>工资<input type="number" name="salary" id="salary"></p>
+	<p><input type="submit" value="注册"></p>
+</form>
+</body>
+</html>
+<script>
+	function valid(){
+		var username = document.getElementById('username').value;
+		var password = document.getElementById('password').value;
+		var repassword = document.getElementById('repassword').value;
+		var salary = document.getElementById('salary').value;
+		if(username.length==0 || username==''){
+			alert('密码与确认密码不一致，请重新输入');
+			return false;
+		}
+		return true;
+	} 
+</script>

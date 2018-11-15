@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>序号</th>
+			<th>用户名</th>
+			<th>注册时间</th>
+			<th>操作</th>
+		</tr>
+		{foreach:items=$data key=$key item=$value}
+			<tr>
+				<td>{echo:$key+1}</td>
+				<td>{$value['username']}</td>
+				<td>{echo:date('Y-m-d',$value['addtime'])}</td>
+				<td><a href="{url:security/delete/id/$value['id']}">删除</a></td>
+			</tr>
+		{/foreach}
+	</table>
+</body>
+</html>
