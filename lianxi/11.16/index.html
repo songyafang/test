@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<form>
+		城市：<input type="text" name="city" id="city">
+	</form>
+</body>
+</html>
+<script>
+	$(function(){
+		$('#city').on('blur',function(){
+			var city = $('#city').val();
+			if(city =='' || $.trim(city).length == 0){
+				alert('文本框不能为空');
+				return;
+			}
+
+			if(city.length>30){
+				alert('文本框中数据长度不能超过30个字符！');
+				return;
+			}
+			var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+$/i;
+			if(!reg.test(city)){
+				alert('不能输入除字母、数字或汉字以外的任意字符');
+				return;
+			}
+
+			$.ajax({
+				url:'process.php',
+				type:'get',
+				dataType:'json',
+				data:{'city':city},
+				success:function(data){
+					alert(data)
+				}
+			});
+		})
+	});
+</script>
